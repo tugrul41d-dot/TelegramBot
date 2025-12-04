@@ -1,0 +1,15 @@
+# Bot exe yolu
+$BotPath = "C:\@ByteVectorBot\dist\bytevectorbot.exe"
+
+# Sonsuz döngü
+while ($true) {
+    # Bot çalışıyor mu kontrol et
+    if (-not (Get-Process -Name "bytevectorbot" -ErrorAction SilentlyContinue)) {
+        Write-Host "Bot çalışmıyor. Yeniden başlatılıyor..."
+        Start-Process $BotPath
+    } else {
+        Write-Host "Bot aktif."
+    }
+    # 60 saniye bekle
+    Start-Sleep -Seconds 60
+}
